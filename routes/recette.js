@@ -3,7 +3,7 @@ const express=require("express");
 const Recette = require("../models/recette");
 const isAuth = require("../middleware/passport");
 const recetteRouter = express.Router();
-const {  isAdmin,recetteRules, commentRules, validation } = require("../middleware/validator");
+const {  isAdmin,recetteRules, validation } = require("../middleware/validator");
 
 //get recette
 recetteRouter.get("/",async(req,res)=>{
@@ -78,27 +78,7 @@ recetteRouter.put("/:id", isAuth(),async(req,res)=>{
 })
 
 
-// Ajouter un commentaire
-recetteRouter.post("/:id/comment", isAuth(), commentRules(), validation,  async (req, res) => {
-  try {
-    const recette = await Recette.findById(req.params.id);
-    if (!recette) return res.status(404).send({ msg: "Recette non trouvée" });
 
-    // Ajouter le commentaire
-    recette.comments.push({
-      user: req.user.id,// req.user est fourni par Passport
-      text: req.body.text,
-    });
-
-    await recette.save();
-
-    // Retourner la recette mise à jour
-    const updatedRecette = await Recette.findById(req.params.id).populate("comments.user", "name email");
-    res.send({ recipe: updatedRecette, msg: "Commentaire ajouté !" });
-  } catch (error) {
-    res.status(500).send({ msg: "Erreur serveur" });
-  }
-});
 
 
 

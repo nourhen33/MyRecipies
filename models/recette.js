@@ -12,13 +12,7 @@ const recetteSchemma = new schema({
   materiels: [String], 
   chefId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
   isApproved: { type: Boolean, default: false }  ,
-  comments: [
-    {
-      user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
-      text: { type: String, required: true },                     
-      date: { type: Date, default: Date.now },                    
-    },
-  ],   
+   
   category: { type: String, enum: ["sweet", "savory", "drink", "other"], default: "other" }
 });
 

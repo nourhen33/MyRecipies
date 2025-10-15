@@ -46,20 +46,7 @@ export const updateRecipe = createAsyncThunk("recipe/update", async ({ id, updat
   }
 });
 
-// Ajouter un commentaire
-export const addComment = createAsyncThunk("recipe/comment", async ({ id, text }, { rejectWithValue }) => {
-  try {
-    const token = localStorage.getItem("token");
-    const response = await axios.post(
-      `http://localhost:4000/recette/${id}/comment`,
-      { text },
-      { headers: { Authorization: token } }
-    );
-    return response.data.recipe; // recette mise à jour
-  } catch (error) {
-    return rejectWithValue(error.response?.data?.msg || "Erreur lors de l'ajout du commentaire");
-  }
-});
+
 
 // Approuver une recette (Admin uniquement)
 export const approveRecipe = createAsyncThunk(
@@ -136,12 +123,7 @@ const recipeSlice = createSlice({
         );
       })
 
-      // Add Comment 
-      .addCase(addComment.fulfilled, (state, action) => {
-        state.recipes = state.recipes.map((r) =>
-          r._id === action.payload._id ? action.payload : r
-        );
-      })
+     
       //  Approve Recipe
         .addCase(approveRecipe.fulfilled, (state, action) => {
         state.recipes = state.recipes.map((r) =>
