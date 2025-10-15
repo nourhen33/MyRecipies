@@ -1,0 +1,236 @@
+/*  CONTAINER  */
+.profile-container {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 35px;
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+}
+
+/* HEADER  */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #36d1dc;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.user-info {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.user-info h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.user-info p {
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.edit-btn {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(54, 209, 220, 0.4);
+}
+
+/*  SECTION TITRES */
+section h3 {
+  color: #2c3e50;
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+  
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+/* LISTE DES RECETTES  */
+.recipe-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-item {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recipe-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.recipe-info h4 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+.recipe-info p {
+  margin: 6px 0 0 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/*  STATUS */
+.status {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status.approved {
+  color: #2e7d32;
+}
+
+.status.pending {
+  color: #f39c12;
+}
+
+/* DELETE BUTTON  */
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(231,76,60,0.35);
+}
+
+/*  MODAL  */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-content input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #36d1dc;
+  box-shadow: 0 0 8px rgba(54,209,220,0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.cancel-btn {
+  padding: 10px 16px;
+  background: #ccc;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.save-btn {
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(54,209,220,0.4);
+}

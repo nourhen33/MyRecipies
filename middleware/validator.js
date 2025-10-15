@@ -24,7 +24,25 @@ exports.loginRules = () => [
     max: 20,
   }),
 ];
+// Validation recettes 
+exports.recetteRules = () => [
+  check("titre", "Le titre est obligatoire").notEmpty(),
+  check("description", "La description est obligatoire").notEmpty(),
+];
 
+// Validation commentaires 
+exports.commentRules = () => [
+  check("text", "Le commentaire est obligatoire").notEmpty(),
+];
+exports.isAdmin = (req, res, next) => {
+  if (!req.user || req.user.role !== "admin") {
+    return res.status(403).json({ message: "Accès refusé : admin uniquement" });
+  }
+  next();
+};
+
+
+//  Middleware pour gérer les erreurs 
 exports.validation = (req, res, next) => {
   const errors = validationResult(req);
   

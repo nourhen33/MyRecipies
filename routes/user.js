@@ -39,7 +39,7 @@ userRouter.post("/register", registerRules(), validation, async (req, res) => {
     });
     // save the user
     let result = await newuser.save();
-    // Réponse avec les données complètes
+    
     res.send({ user: result, msg: "user is added", token });
   } catch (error) {
     console.log(error);
@@ -82,26 +82,9 @@ userRouter.post("/login", loginRules(), validation, async (req, res) => {
 userRouter.get("/current", isAuth(), (req, res) => {
   res.status(200).send({ user: req.user });
 });
-    // send the user
-//     res
-//       .status(200)
-//       .send({ user: searcheduser, msg: "success", token: `Bearer ${token}` });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send({ msg: "can not get the user" });
-//   }
-// });
 
-//add new user
-userRouter.post("/add", async (req, res) => {
-  try {
-    let newuser = new User(req.body);
-    let result = await newuser.save();
-    res.send({ recette: result, msg: "user is added" });
-  } catch (error) {
-    console.log(error);
-  }
-});
+
+
 
 //get all users
 userRouter.get("/", async (req, res) => {
@@ -161,8 +144,5 @@ userRouter.delete("/:id", async (req, res) => {
   }
 });
 
-// userRouter.get("/current", isAuth(),async (req, res) => {
-//   res.status(200).send(req.user );
-// });
 
 module.exports = userRouter;

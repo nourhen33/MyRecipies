@@ -3,7 +3,7 @@ const schema=mongoose.Schema;
 
 
 const recetteSchemma = new schema({
-  titre: { type: String, required: true }  ,     
+ titre: { type: String, required: true }  ,     
   description: String,    
   country: String, 
   imageUrl: String,      
@@ -11,7 +11,15 @@ const recetteSchemma = new schema({
   steps:[String], 
   materiels: [String], 
   chefId: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
-  isApproved: { type: Boolean, default: false }     
+  isApproved: { type: Boolean, default: false }  ,
+  comments: [
+    {
+      user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, 
+      text: { type: String, required: true },                     
+      date: { type: Date, default: Date.now },                    
+    },
+  ],   
+  category: { type: String, enum: ["sweet", "savory", "drink", "other"], default: "other" }
 });
 
 

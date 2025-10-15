@@ -1,0 +1,103 @@
+.admin-dashboard {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafc;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.admin-dashboard h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  border-bottom: 3px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/*  Recipe Card  */
+.recipe-card {
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.recipe-card p {
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/*  Buttons */
+.recipe-card button {
+        
+  padding: 6px 12px;       
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 8px;       
+  margin-top: 10px; 
+}
+
+.recipe-card button:first-of-type {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.recipe-card button:first-of-type:hover {
+  background-color: #43a047;
+}
+
+.recipe-card button:last-of-type {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.recipe-card button:last-of-type:hover {
+  background-color: #c0392b;
+}
+
+/* Status */
+.recipe-card p:last-of-type {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.recipe-card p:last-of-type span {
+  font-weight: bold;
+}
+
+/*  Responsive  */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 20px;
+  }
+
+  .recipe-card {
+    padding: 15px;
+  }
+
+  .recipe-card h3 {
+    font-size: 1.1rem;
+  }
+}

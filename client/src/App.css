@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Poppins:wght@300&family=Roboto:wght@500;700&family=Source+Code+Pro:ital@1&display=swap');
 
 body {
+   margin-top: 0;
+  padding-top: 0;
   background: #eee !important;
 }
 
@@ -39,8 +42,37 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-.header{
-  width: 100%;
-  height: 150px;
-  background-color: aqua;
+
+.services{
+  display: flex;
+  justify-content: space-between;
+  margin: top 30px;
 }
+.services img{
+width: 430p;
+height:243px ;
+border: radius 20px; 
+margin-bottom: 50px;
+}
+.icons-recipes img{
+  width:25px;
+  height: 29px;
+}
+.icons-recipes button {
+  background-color: transparent;
+  border: none;
+  
+}
+.icons-recipes{
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  margin-bottom: 50px;
+}
+.recipes{
+  display: flex;
+  flex-direction:column ;
+  align-items: center;
+  justify-content: center;
+}
+

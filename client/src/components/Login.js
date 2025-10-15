@@ -1,70 +1,82 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom'; // Correction de l'import
+import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from '../JS/userSlice/UserSlice';
+import './Login.css';
 
 const Login = () => { 
-    const [login, setLogin] = useState({
-      email: "",
-      password: ""
-    });
-  
+  const [login, setLogin] = useState({
+    email: "",
+    password: ""
+  });
+
   const dispatch = useDispatch();
-  let navigate = useNavigate();
-  const userState = useSelector((state) => state.user);
-  const status = userState?.status || null;
-  
+  const navigate = useNavigate();
+  const { status } = useSelector((state) => state.user);
+
   const handleLogin = (e) => {
-    e.preventDefault(); 
-    // Validation basique
+    e.preventDefault();
+
     if (!login.email || !login.password) {
       alert("Veuillez remplir tous les champs");
       return;
     }
+
     dispatch(userLogin(login));
-    navigate("/profil");
+
+    setTimeout(() => {
+      navigate("/profil");
+    }, 800);
   };
-  
+
   return (
-    <div className="wrapper">
-      <form className="form-signin" onSubmit={handleLogin}>       
-        <h2 className="form-signin-heading">Please login</h2>
-        <input 
-          type="email" 
-          className="form-control" 
-          name="email" 
-          placeholder="Email Address" 
-          required 
-          value={login.email}
-          onChange={(e) => setLogin({...login, email: e.target.value})} 
-        />
-        <input 
-          type="password" 
-          className="form-control" 
-          name="password" 
-          placeholder="Password" 
-          required 
-          value={login.password}
-          onChange={(e) => setLogin({...login, password: e.target.value})}
-        />   
-        <label className="checkbox">
-          <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"/> Remember me
-        </label>
-        <button 
-          className="btn btn-lg btn-primary btn-block" 
-          onClick={()=>{
-            dispatch(userLogin(login));
-            setTimeout(()=>{
-              navigate("/profil");
-            },1000);
-             setTimeout(()=>{
-            window.location.reload();
-            },1000);
-          }}>Login</button>
-        <p>You don't have an account? <Link to="/register">Register now</Link></p>
-      </form>
+     <div className="auth-container">
+      <div className="auth-image">
+        <img src="/images/pizza.jpg"alt="Login" className="auth-img" />
+      </div>
+
+      <div className="auth-form">
+        <form onSubmit={handleLogin} className="form-box">
+
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="Email"
+              value={login.email}
+              onChange={(e) => setLogin({ ...login, email: e.target.value })}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={login.password}
+              onChange={(e) => setLogin({ ...login, password: e.target.value })}
+              required
+            />
+          </div>
+
+          <div className="remember">
+            <input type="checkbox" id="rememberMe" />
+            <label>Remember me</label>
+          </div>
+
+          <button type="submit" className="btn-auth">
+            {status === 'loading' ? 'Connexion...' : 'Sign In'}
+          </button>
+
+          <p className="redirect-text">
+             Don’t have an account?{" "} <Link to="/">  Sign up here</Link>
+          </p>
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
+
 
 export default Login;

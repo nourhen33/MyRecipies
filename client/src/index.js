@@ -6,15 +6,23 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import { Provider } from 'react-redux'
 import { store } from './JS/Store';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+   
     <BrowserRouter>
+     <Provider store={store}>
     <App />
-    </BrowserRouter>
     </Provider>
+    </BrowserRouter>
+    
   </React.StrictMode>
 );
 
